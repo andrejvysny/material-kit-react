@@ -3,6 +3,8 @@ import { Outlet, Navigate, useRoutes } from 'react-router-dom';
 
 import DashboardLayout from 'src/layouts/dashboard';
 
+import Loader from "../components/Loader";
+
 export const IndexPage = lazy(() => import('src/pages/app'));
 export const BlogPage = lazy(() => import('src/pages/blog'));
 export const UserPage = lazy(() => import('src/pages/user'));
@@ -17,7 +19,7 @@ export default function Router() {
     {
       element: (
         <DashboardLayout>
-          <Suspense>
+          <Suspense fallback={<Loader/>}>
             <Outlet />
           </Suspense>
         </DashboardLayout>
